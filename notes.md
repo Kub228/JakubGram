@@ -51,3 +51,5 @@ Next.js si nevsima folder ak je pomanovany (<meno>), to znamena ze ak sa v nom n
 
 pomenovanim not-found.tsx si mozme spravit custom not found page
 
+test1
+
