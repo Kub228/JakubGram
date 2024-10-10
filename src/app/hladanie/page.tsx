@@ -1,11 +1,13 @@
-// src/app/Hladanie/page.tsx
+// robertweb/src/app/hladanie/page.tsx
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Hladanie | ZoskaSnap'}
+export const metadata = { title: 'Vyhladavanie | RobertWeb'};
 
-export default function Search() {
+export default function SearchBar() {
   return (
-    <Typography>Hladanie</Typography>
+
+      <Typography> Vyhladavanie </Typography>
+
   );
 }

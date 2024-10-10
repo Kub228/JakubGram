@@ -1,14 +1,15 @@
-// src/app/o-mne/page.tsx
 
-import Container from '@mui/material/Container';
+// robertweb/src/app/o-mne/page.tsx
+
 import Typography from '@mui/material/Typography';
+import  Container  from '@mui/material/Container';
 
-export const metadata = { title: 'O mne | ZoskaSnap'}
+export const metadata = { title: 'O-mne | RobertWeb'};
 
 export default function About() {
   return (
     <Container>
-      <Typography>O mne stranka</Typography>
+      <Typography> O mne halo </Typography>
     </Container>
   );
 }

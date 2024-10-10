@@ -1,11 +1,13 @@
-// src/app/auth/registracia/page.tsx
+// robertweb/src/app/auth/registracia/page.tsx
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Registracia| ZoskaSnap'}
+export const metadata = { title: 'Registracia | RobertWeb'};
 
 export default function SignUp() {
   return (
-    <Typography>Registracia</Typography>
+
+      <Typography> Registracia </Typography>
+
   );
 }

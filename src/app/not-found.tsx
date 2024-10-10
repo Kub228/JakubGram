@@ -1,12 +1,14 @@
-// src/app/not-found.tsx
+
+// robertweb/src/app/notFound.tsx
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Nenajdene | ZoskaSnap'}
+export const metadata = { title: 'NotFound | RobertWeb'};
 
 export default function NotFound() {
   return (
-    <Typography>Stranka neexistuje</Typography>
+
+      <Typography> 404 | NotFound</Typography>
+
   );
 }
-

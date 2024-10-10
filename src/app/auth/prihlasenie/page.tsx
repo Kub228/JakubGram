@@ -1,11 +1,13 @@
-// src/app/auth/prihlasenie/page.tsx
+// robertweb/src/app/auth/prihlasenie/page.tsx
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Prihlasenie | ZoskaSnap'}
+export const metadata = { title: 'Prihlasenie | RobertWeb'};
 
-export default function SignIn() {
+export default function LogIn() {
   return (
-    <Typography>Prihlasenie</Typography>
+
+      <Typography> prihlasenie </Typography>
+
   );
 }

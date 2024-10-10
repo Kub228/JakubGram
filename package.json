@@ -1,5 +1,5 @@
 {
-  "name": "prax-app-1",
+  "name": "robertweb",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,8 +11,10 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.0.2",
-    "next": "14.2.9",
+    "@fontsource/roboto": "^5.0.15",
+    "@mui/icons-material": "^6.1.2",
+    "@mui/material": "^6.1.2",
+    "next": "^14.2.14",
     "react": "^18",
     "react-dom": "^18"
   },

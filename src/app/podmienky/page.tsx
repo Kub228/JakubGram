@@ -1,14 +1,14 @@
-// src/app/podmienky/page.tsx
 
-import Box from '@mui/material/Box';
+// robertweb/src/app/podmienky/page.tsx
 import Typography from '@mui/material/Typography';
+import  Box   from '@mui/material/Box';
 
-export const metadata = { title: 'Podmienky | ZoskaSnap'}
+export const metadata = { title: 'Podmienky | RobertWeb'};
 
 export default function TermsConditions() {
   return (
     <Box>
-      <Typography>Podmienky stranka</Typography>
+      <Typography> Podmienky pouzivatela </Typography>
     </Box>
   );
 }

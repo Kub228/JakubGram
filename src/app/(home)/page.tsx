@@ -1,11 +1,20 @@
-// src/app/(home)/page.tsx
+
+// robertweb/src/app/(home)/page.tsx
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Domov | ZoskaSnap'}
+export const metadata = { title: 'Domov | RobertWeb'};
 
 export default function Home() {
   return (
-    <Typography>Domovska stranka</Typography>
+
+      <Typography> Domovska stranka </Typography>
+
+
+
+      
   );
 }
+
+
+//first commit

@@ -1,11 +1,13 @@
-// src/app/prispevok/page.tsx
+// robertweb/src/app/prispevok/page.tsx
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Zoznam prispevkov | ZoskaSnap'}
+export const metadata = { title: 'Zoznam prispevkov | RobertWeb'};
 
 export default function PostList() {
   return (
-    <Typography>Zoznam prispevkov</Typography>
+
+      <Typography> Zoznam prispevok </Typography>
+
   );
 }

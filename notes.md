@@ -1,53 +1,37 @@
-Installation:
-npx create-next-app@latest
+npx create-next-app@latest   --> i
+    nstall command
+ls   --> 
+    terminal – show root, vypis directiories
+cd --> 
+    change directory
+cd .. --> 
+    posunie nas o uroven vyzsie
+npm run dev --> 
+    zapinanie projektu
+npm install @mui/material @emotion/react @emotion/styled --> 
+    install mui libarry (html a css)
+git init --> 
+    inicializacia gitu
+git branch -m <name> --> 
+    zmeni meno git main brainchu
+git config --global user.name "your name“ --> 
+    nastavime user name
+git config --global user.email "your email" --> 
+    nastavime user email
+git remote add origin https://github.com/your_username/project_name.git --> 
+    nastavite svoj projekt
+git add . --> 
+    vlozite vsetky files z filu, ktory ste nastavili
+git commit -m "Initial commit" --> 
+    commit changes
 
-Commands:
-ls - Lynux vypise obsah directory
+- Node js vzdy zobrazuje stranku, ktora sa musi volat page.tsx a musi byt v app priecinku. Ako home stranku zobrazu tu, ktora je len v app priecinku a nie je zabalena nejakym inym priecinkom. Preto na home priecinok dame () --> (home) lebo router home priecinok „nevidi“ ak je v zatvrokach a page vnom zonbere ako default.
 
+Next.js rezervovane nazvy --> layout.tsx, not-found.tsx, page.tsx
 
-cd - Presmeruje do directory
+-routing --> 
+npm run build --> skompiluje a vytvori production server na localhoste, vzdy zapnut pred commit/sync aby sa errors nedostali na production server
 
-
-npx – node package execute
-	npx install – nainstaluje cely framework
-
-
-npm – node package manager
-	npm install – doinstaluje package
-
-npm run build – tvorba optimalizovaneho production buildu
-
-
-
-
-
-Git commands:
-
-git init = spusti git
-
-git branch –m <name> = spravy main branch v github
-
-git config –-global user.name “<name>“ 
-
-git config –-global user.email “<email>“ 
-
-git remote add origin githuburl = prepoji git a github
-
-git remote -v = verifikuje prepojenie medzi git a github
-
-
-
-git add .
-
-git commit -m "initial commit"
-
-git push -u origin main
-
-
-
-NEXT.JS poznamky:
-
-Next.js si nevsima folder ak je pomanovany (<meno>), to znamena ze ak sa v nom nechadza page, tak ho robi defaultnym 
-
-pomenovanim not-found.tsx si mozme spravit custom not found page
+- vypise vsetky folders a files okrem .next, node_modules, .git -->
+    ind . -path './.next' -prune -o -path './node_modules' -prune -o -path './.git' -prune -o -print | sed -e "s/[^\/]*// |/g" -e "s/|([^ ])/|-\1/"
 
