@@ -2,7 +2,7 @@
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Zoznam komentarov | RobertWeb'};
+export const metadata = { title: 'Zoznam komentarov | JakubGram'};
 
 export default function CommentList() {
   return (

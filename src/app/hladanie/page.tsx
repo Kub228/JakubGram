@@ -2,7 +2,7 @@
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Vyhladavanie | RobertWeb'};
+export const metadata = { title: 'Vyhladavanie | JakubGram'};
 
 export default function SearchBar() {
   return (

@@ -2,7 +2,7 @@
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Registracia | RobertWeb'};
+export const metadata = { title: 'Registracia | JakubGram'};
 
 export default function SignUp() {
   return (

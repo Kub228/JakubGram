@@ -2,7 +2,7 @@
 
 import Typography from '@mui/material/Typography';
 
-export const metadata = { title: 'Detail profilu | RobertWeb'};
+export const metadata = { title: 'Detail profilu | JakubGram'};
 
 export default function ProfileDetail() {
   return (
