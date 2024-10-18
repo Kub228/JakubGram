@@ -35,3 +35,4 @@ npm run build --> skompiluje a vytvori production server na localhoste, vzdy zap
 - vypise vsetky folders a files okrem .next, node_modules, .git -->
     ind . -path './.next' -prune -o -path './node_modules' -prune -o -path './.git' -prune -o -print | sed -e "s/[^\/]*// |/g" -e "s/|([^ ])/|-\1/"
 
+test
