@@ -19,8 +19,8 @@ export const authOptions: NextAuthOptions = {
     }),
 
     InstagramProvider({
-      clientId: process.env.INSTAGRAM_CLIENT_ID || "", // Zabezpečte, že hodnoty sú v .env a nie sú prázdne
-      clientSecret: process.env.INSTAGRAM_CLIENT_SECRET || "", // Zabezpečte, že hodnoty sú v .env a nie sú prázdne
+      clientId: process.env.INSTAGRAM_CLIENT_ID, // Zabezpečte, že hodnoty sú v .env a nie sú prázdne
+      clientSecret: process.env.INSTAGRAM_CLIENT_SECRET, // Zabezpečte, že hodnoty sú v .env a nie sú prázdne
     }),
   ],
 
