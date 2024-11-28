@@ -83,6 +83,9 @@ V0 - vercel AI
 Material UI - library
 
 
+============
+MY .env FILE:
+============
 
 #GOOGLE 
 GOOGLE_CLIENT_ID=145302857586-b57nl0a517bdvc160o8v3a1nabkjgif0.apps.googleusercontent.com
