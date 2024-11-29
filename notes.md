@@ -106,7 +106,7 @@ INSTAGRAM_CLIENT_SECRET=b3637b79fd9b64af7b0e80d58f864143
 
 #HOST
 
-NEXTAUTH_URL=http://localhost:3000  #alebo production URL
+NEXTAUTH_URL=https://jakub-gram-1.vercel.app  #alebo production URL
 
 NEXTAUTH_SECRET=e8b144zzzj4x6ns8sz45q9aml56n7a66473ayhgd5dc4q0tdedz8pjbwwmp3ow6f
 

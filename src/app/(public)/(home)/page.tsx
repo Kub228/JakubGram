@@ -4,6 +4,7 @@ import { useSession, getSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
+import { redirect } from 'next/dist/server/api-utils';
 
 export default function Home() {
   const { data: session, status } = useSession();

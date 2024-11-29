@@ -46,7 +46,7 @@ export default function LogIn() {
       >
         Sign in with Instagram
       </Button>
-      
+
     </>
   );
 }

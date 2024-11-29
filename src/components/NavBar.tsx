@@ -2,6 +2,7 @@
 
 "use client";
 
+
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import Box from '@mui/material/Box';
@@ -15,6 +16,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import LogoutIcon from '@mui/icons-material/Logout';
+import GavelIcon from '@mui/icons-material/Gavel'
 import { useSession} from 'next-auth/react';
 
 export default function SimpleBottomNavigation() {
@@ -44,16 +46,18 @@ export default function SimpleBottomNavigation() {
 
         {status === 'authenticated' ? (
           [
+            
+            <BottomNavigationAction key="prispevky" label="Prispevky" value={'/prispevok'} icon={<PostAddIcon />} />,
             <BottomNavigationAction key="hladat" label="Hľadať" value={'/hladanie'} icon={<SearchIcon />} />,
             <BottomNavigationAction key="pridat" label="Pridať" value={'/pridat'} icon={<AddCircleIcon />} />,
             <BottomNavigationAction key="profil" label="Profil" value={'/profil'} icon={<PersonIcon />} />,
-            <BottomNavigationAction key="odhlasit" label="Odhlásiť" value={'/auth/odhlasenie'} icon={<LogoutIcon />} />,
+            <BottomNavigationAction key="odhlasit" label="Odhlásiť" value={'/odhlasenie'} icon={<LogoutIcon />} />,
           ]
         ) : (
           [
-            <BottomNavigationAction key="prispevky" label="Prispevky" value={'/prispevok'} icon={<PostAddIcon />} />,
-            <BottomNavigationAction key="prihlasenie" label="Prihlásenie" value={'/auth/prihlasenie'} icon={<LoginIcon />} />,
-            <BottomNavigationAction key="registracia" label="Registrácia" value={'/auth/registracia'} icon={<HowToRegIcon />} />,
+            <BottomNavigationAction key="GDPR" label="GDPR" value={'/gdpr'} icon={<GavelIcon />} />,
+            <BottomNavigationAction key="prihlasenie" label="Prihlásenie" value={'/prihlasenie'} icon={<LoginIcon />} />,
+            <BottomNavigationAction key="registracia" label="Registrácia" value={'/registracia'} icon={<HowToRegIcon />} />,
           ]
         )}
       </BottomNavigation>
