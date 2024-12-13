@@ -47,7 +47,6 @@ export default function SimpleBottomNavigation() {
         {status === 'authenticated' ? (
           [
             
-            <BottomNavigationAction key="prispevky" label="Prispevky" value={'/prispevok'} icon={<PostAddIcon />} />,
             <BottomNavigationAction key="hladat" label="Hľadať" value={'/hladanie'} icon={<SearchIcon />} />,
             <BottomNavigationAction key="pridat" label="Pridať" value={'/pridat'} icon={<AddCircleIcon />} />,
             <BottomNavigationAction key="profil" label="Profil" value={'/profil'} icon={<PersonIcon />} />,

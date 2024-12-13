@@ -1,28 +1,28 @@
-"use client"; // Indicate this is a Client Component
+"use client";
 
 import { useSession, getSession } from 'next-auth/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
-import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const hasRedirected = useRef(false);
 
   useEffect(() => {
-    // Force-fetch the session to ensure it's up-to-date
     const checkSession = async () => {
       const updatedSession = await getSession();
-      console.log('Updated session:', updatedSession);
-
-      // Optional: Trigger a UI update or handle the session data
-      if (!updatedSession) {
-        console.log('No session found.');
+      
+      if (updatedSession && !hasRedirected.current) {
+        hasRedirected.current = true;
+        router.push('/prispevok'); // or whatever route you want to redirect to
       }
     };
 
     checkSession();
-  }, []);
+  }, [router]);
 
   return (
     <Container>
