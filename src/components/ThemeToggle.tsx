@@ -12,9 +12,9 @@ export function ThemeToggle() {
     <IconButton 
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       sx={{ 
-        color: theme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
+        color: theme === 'dark' ? '#ffffff' : '#000000',
         '&:hover': {
-          color: theme === 'dark' ? '#fff' : '#1976d2',
+          color: theme === 'dark' ? '#ffffff' : '#000000',
         }
       }}
     >

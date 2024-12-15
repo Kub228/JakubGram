@@ -127,7 +127,10 @@ export default function SimpleBottomNavigation() {
         right: 0,
         top: '50%',
         transform: 'translateY(-50%)',
-        marginRight: '8px'
+        marginRight: '8px',
+        '& .MuiIconButton-root': {
+          color: theme === 'dark' ? '#ffffff' : '#000000'
+        }
       }}>
         <ThemeToggle />
       </Box>

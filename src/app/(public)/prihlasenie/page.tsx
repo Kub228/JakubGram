@@ -8,11 +8,9 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { useTheme as useNextTheme } from "next-themes";
-import { useRouter } from 'next/navigation';
 
 export default function SignUp() {
   const { theme } = useNextTheme();
-  const router = useRouter();
 
   return (
     <Box sx={{ 
