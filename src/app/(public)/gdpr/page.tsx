@@ -1,5 +1,4 @@
-// src/app/(public)/gdpr/GDPRContent.tsx
-"use client"
+"use client";
 
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -51,7 +50,7 @@ export default function GDPRContent() {
             marginBottom: 4
           }}
         >
-          Vaša ochrana súkromia je pre nás veľmi dôležitá. V tomto dokumente sa dozviete, ako spracúvame a chránime vaše osobné údaje v súlade s nariadením GDPR.
+          V ZoškaSnap berieme ochranu vašich osobných údajov veľmi vážne. Naša GDPR politika jasne stanovuje, ako zbierame, uchovávame a využívame vaše informácie s cieľom zabezpečiť maximálnu transparentnosť a bezpečnosť. Sme odhodlaní chrániť vaše práva a zabezpečiť, že vaše súkromie je vždy na prvom mieste.
         </Typography>
 
         <Divider sx={{ marginY: 4 }} />
@@ -73,7 +72,7 @@ export default function GDPRContent() {
               color: theme === 'dark' ? '#ffffff' : '#000000'
             }}
           >
-            Všetky osobné údaje, ktoré nám poskytnete, budú použité iba na účely, na ktoré boli poskytnuté.
+            Vaša dôvera je pre nás mimoriadne cenná. Preto všetky osobné údaje, ktoré nám poskytnete, využívame výlučne na tie účely, pre ktoré boli zverené. Zaväzujeme sa přistupovať k vašim informáciám so zodpovednosťou a využívať prísne bezpečnostné opatrenia, aby sme zaistili, že vaše dáta sú vždy chránené.
           </Typography>
         </Box>
 
@@ -94,7 +93,7 @@ export default function GDPRContent() {
               color: theme === 'dark' ? '#ffffff' : '#000000'
             }}
           >
-            Máte právo na prístup k svojim údajom, ich úpravu alebo vymazanie. Kontaktujte nás na emailovej adrese support@zoskasnap.sk.
+            Vaše práva sú pre nás prioritou. Máte úplné právo na prístup, opravu alebo vymazanie vašich osobných údajov, ako aj na obmedzenie ich spracovania. Ak máte otázky či požiadavky, neváhajte nás kontaktovať na adrese support@zoskasnap.sk – radi vám poskytneme všetky potrebné informácie.
           </Typography>
         </Box>
 
@@ -125,6 +124,21 @@ export default function GDPRContent() {
           </Box>
           .
         </Typography>
+
+        {/* Back Button */}
+        <Box sx={{ mt: 4, textAlign: 'center' }}>
+          <Typography 
+            variant="button"
+            onClick={() => router.back()}
+            sx={{ 
+              cursor: 'pointer', 
+              color: theme === 'dark' ? '#90caf9' : '#1976d2',
+              textDecoration: 'underline'
+            }}
+          >
+            Späť
+          </Typography>
+        </Box>
       </Paper>
     </Box>
   );

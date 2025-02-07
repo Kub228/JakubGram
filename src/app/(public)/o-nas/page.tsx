@@ -1,4 +1,3 @@
-// src/app/(public)/o-nas/AboutContent.tsx
 "use client"
 
 import Typography from '@mui/material/Typography';
@@ -10,6 +9,8 @@ import { useTheme as useNextTheme } from "next-themes";
 
 export default function AboutContent() {
   const { theme } = useNextTheme();
+  // Replace the URL below with your desired image link.
+  const imageLink = "http://upload.wikimedia.org/wikipedia/commons/c/c7/Domestic_shorthaired_cat_face.jpg";
 
   return (
     <Box sx={{ 
@@ -41,7 +42,17 @@ export default function AboutContent() {
           >
             O nás
           </Typography>
-
+          <Box
+            component="img"
+            src={imageLink}
+            alt="Profile Image"
+            sx={{
+              width: 150,
+              height: 150,
+              borderRadius: '50%',
+              objectFit: 'cover',
+            }}
+          />
           <Typography 
             variant="body1"
             align="center"
@@ -50,7 +61,8 @@ export default function AboutContent() {
               marginBottom: 2
             }}
           >
-            Vitajte na stránkach ZoškaSnap! Sme hrdí na našu školu a komunitu na SPŠE Zochova 9 v Bratislave.
+            Vitajte na stránkach ZoškaSnap! Sme digitálnou platformou, ktorá spája študentov, učiteľov, absolventov a fanúšikov SPŠE Zochova 9 v Bratislave. Naša škola, známa svojou bohatou tradíciou a vysokou úrovňou vzdelávania, neustále napreduje a inováciami obohacuje svoj vzdelávací proces. {"\n\n"}
+            Na tejto stránke nájdete aktuálne informácie o školských aktivitách, zaujímavé príbehy našich úspešných absolventov a novinky zo života nášho školského spoločenstva. Sme hrdí na komunitu, ktorá spája minulosť, prítomnosť a budúcnosť, a veríme, že každý člen prispieva k rastu a rozvoju tejto jedinečnej siete.
           </Typography>
 
           <Box 
