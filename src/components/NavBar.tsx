@@ -16,16 +16,57 @@ import InfoIcon from '@mui/icons-material/Info';
 import { useSession } from 'next-auth/react';
 import { ThemeToggle } from "@/components/ThemeToggle"
 import { useTheme as useNextTheme } from "next-themes"
+import Avatar from '@mui/material/Avatar';
+import { useEffect, useState } from 'react';
+import { fetchProfileByUserId } from '@/app/actions/profiles';
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState('/');
   const router = useRouter();
-  const { status } = useSession();
+  const { data: session, status } = useSession();
   const { theme } = useNextTheme();
+  const [profileAvatar, setProfileAvatar] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      if (session?.user?.id) {
+        try {
+          const profile = await fetchProfileByUserId(session.user.id);
+          if (profile?.avatarUrl) {
+            setProfileAvatar(profile.avatarUrl);
+          }
+        } catch (error) {
+          console.error('Failed to fetch profile:', error);
+        }
+      }
+    };
+
+    loadProfile();
+  }, [session?.user?.id]);
 
   const handleNavigation = (newValue: string) => {
     setValue(newValue);
     router.push(newValue);
+  };
+
+  // Custom icon component for profile that shows either Avatar or PersonIcon
+  const ProfileIcon = () => {
+    if (profileAvatar) {
+      return (
+        <Avatar 
+          src={profileAvatar} 
+          sx={{ 
+            width: 24, 
+            height: 24,
+            '.MuiBottomNavigationAction-root.Mui-selected &': {
+              width: 26,
+              height: 26,
+            }
+          }}
+        />
+      );
+    }
+    return <PersonIcon />;
   };
 
   return (
@@ -89,7 +130,7 @@ export default function SimpleBottomNavigation() {
               key="profil" 
               label="Profil" 
               value={'/profil'} 
-              icon={<PersonIcon />} 
+              icon={<ProfileIcon />}
             />,
             <BottomNavigationAction 
               key="odhlasit" 

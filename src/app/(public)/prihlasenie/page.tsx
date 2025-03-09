@@ -12,6 +12,10 @@ import { useTheme as useNextTheme } from "next-themes";
 export default function SignUp() {
   const { theme } = useNextTheme();
 
+  const handleSignIn = (provider: string) => {
+    signIn(provider, { callbackUrl: '/prispevok' });
+  };
+
   return (
     <Box sx={{ 
       display: 'flex',
@@ -30,7 +34,7 @@ export default function SignUp() {
           maxWidth: 400,
         }}
       >
-        <Stack spacing={3} alignItems="center">
+        <Stack spacing={2}>
           <Head>
             <title>Prihlasenie | JakubGram</title>
           </Head>
@@ -59,7 +63,7 @@ export default function SignUp() {
 
           <Button 
             variant="outlined" 
-            onClick={() => signIn('google')}
+            onClick={() => handleSignIn('google')}
             fullWidth
             sx={{
               height: 48,
@@ -78,7 +82,7 @@ export default function SignUp() {
 
           <Button 
             variant="outlined" 
-            onClick={() => signIn('facebook')}
+            onClick={() => handleSignIn('facebook')}
             fullWidth
             sx={{
               height: 48,

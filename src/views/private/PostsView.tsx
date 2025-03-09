@@ -2,6 +2,7 @@
 
 // React imports
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // next-themes import
 import { useTheme } from "next-themes";
@@ -29,14 +30,16 @@ interface Post {
   updatedAt: Date;
   user: {
     name: string | null;
-    // Optionally, you can add a profileImage property here in the future:
-    // profileImage?: string;
+    profile?: {
+      avatarUrl?: string | null;
+    } | null;
   };
 }
 
 const PostsView = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const { theme } = useTheme();
+  const router = useRouter();
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -50,6 +53,16 @@ const PostsView = () => {
 
     loadPosts();
   }, []);
+
+  // Navigation handlers
+  const handlePostClick = (postId: string) => {
+    router.push(`/prispevok/${postId}`);
+  };
+
+  const handleProfileClick = (userId: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering post click
+    router.push(`/profil/${userId}`);
+  };
 
   // Determine card background based on theme:
   const cardBackground =
@@ -81,15 +94,30 @@ const PostsView = () => {
                 flexDirection: "column",
                 borderRadius: "25px",
                 overflow: "hidden",
+                cursor: "pointer",
+                transition: "transform 0.2s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.02)",
+                },
               }}
+              onClick={() => handlePostClick(post.id)}
             >
               {/* User's name with profile picture */}
               <CardContent sx={{ pt: 1, pb: 0, mb: 1 }}>
-                <Box display="flex" alignItems="center">
+                <Box 
+                  display="flex" 
+                  alignItems="center"
+                  onClick={(e) => handleProfileClick(post.userId, e)}
+                  sx={{ 
+                    cursor: "pointer",
+                    "&:hover": {
+                      opacity: 0.8,
+                    },
+                  }}
+                >
                   <Avatar
                     sx={{ mr: 2, width: 40, height: 40 }}
-                    // If a profileImage URL is added to the user data, update src accordingly:
-                    // src={post.user.profileImage}
+                    src={post.user.profile?.avatarUrl || undefined}
                   >
                     {post.user.name ? post.user.name.charAt(0) : "N"}
                   </Avatar>

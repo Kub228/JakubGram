@@ -27,7 +27,7 @@ export default function SignUp() {
       return;
     }
     setShowError(false);
-    signIn(provider);
+    signIn(provider, { callbackUrl: '/prispevok' });
   };
 
   return (
