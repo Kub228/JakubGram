@@ -23,10 +23,6 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CommentIcon from '@mui/icons-material/Comment';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -90,7 +86,6 @@ export default function PostDetail() {
   const [post, setPost] = useState<Post | null>(null);
   const [likes, setLikes] = useState<Like[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [commentDialogOpen, setCommentDialogOpen] = useState(false);
   const [newComment, setNewComment] = useState("");
   const { theme } = useTheme();
   const params = useParams();
@@ -297,8 +292,8 @@ export default function PostDetail() {
 
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <IconButton
-                    onClick={() => setCommentDialogOpen(true)}
-                    sx={{ color: theme === "dark" ? "#aaaaaa" : "#666666" }}
+                    onClick={handleAddComment}
+                    sx={{ color: theme === 'dark' ? '#ffffff' : '#000000' }}
                   >
                     <CommentIcon />
                   </IconButton>

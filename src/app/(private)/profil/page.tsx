@@ -46,7 +46,7 @@ interface Profile {
   interests: string[];
   user: {
     name: string | null;
-    email: string;
+    email: string | null;
   };
 }
 

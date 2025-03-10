@@ -134,6 +134,13 @@ export const likePost = async (postId: string, userId: string) => {
         userId,
         postId,
       },
+      include: {
+        user: {
+          include: {
+            profile: true,
+          },
+        },
+      },
     });
     return like;
   } catch (error) {
