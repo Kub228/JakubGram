@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { useSession } from "next-auth/react";
 
 // MUI imports
 import Container from "@mui/material/Container";
@@ -38,6 +39,7 @@ const ProfilesSearchView = () => {
   const [filteredProfiles, setFilteredProfiles] = useState<Profile[]>([]);
   const { theme } = useTheme();
   const router = useRouter();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const loadProfiles = async () => {
@@ -75,7 +77,11 @@ const ProfilesSearchView = () => {
   const cardBackground = theme === "dark" ? "rgba(255, 255, 255, 0.12)" : "rgb(225, 225, 225)";
 
   const handleProfileClick = (userId: string) => {
-    router.push(`/profil/${userId}`);
+    if (userId === session?.user?.id) {
+      router.push('/profil');
+    } else {
+      router.push(`/profil/${userId}`);
+    }
   };
 
   return (

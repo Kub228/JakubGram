@@ -13,6 +13,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import LogoutIcon from '@mui/icons-material/Logout';
 import InfoIcon from '@mui/icons-material/Info';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import { useSession } from 'next-auth/react';
 import { ThemeToggle } from "@/components/ThemeToggle"
 import { useTheme as useNextTheme } from "next-themes"
@@ -26,6 +28,7 @@ export default function SimpleBottomNavigation() {
   const { data: session, status } = useSession();
   const { theme } = useNextTheme();
   const [profileAvatar, setProfileAvatar] = useState<string | null>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -47,6 +50,19 @@ export default function SimpleBottomNavigation() {
   const handleNavigation = (newValue: string) => {
     setValue(newValue);
     router.push(newValue);
+  };
+
+  const handleProfileClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    handleClose();
+    router.push('/odhlasenie');
   };
 
   // Custom icon component for profile that shows either Avatar or PersonIcon
@@ -131,12 +147,7 @@ export default function SimpleBottomNavigation() {
               label="Profil" 
               value={'/profil'} 
               icon={<ProfileIcon />}
-            />,
-            <BottomNavigationAction 
-              key="odhlasit" 
-              label="Odhlásiť" 
-              value={'/odhlasenie'} 
-              icon={<LogoutIcon />} 
+              onClick={handleProfileClick}
             />,
           ]
         ) : (
@@ -162,6 +173,32 @@ export default function SimpleBottomNavigation() {
           ]
         )}
       </BottomNavigation>
+      
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        PaperProps={{
+          sx: {
+            bgcolor: theme === 'dark' ? '#1a1a1a' : 'background.paper',
+            color: theme === 'dark' ? '#fff' : '#000',
+            marginBottom: '8px'
+          }
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profil</MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <LogoutIcon sx={{ mr: 1 }} /> Odhlásiť sa
+        </MenuItem>
+      </Menu>
       
       <Box sx={{ 
         position: 'absolute',

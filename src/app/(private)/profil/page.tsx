@@ -68,6 +68,7 @@ export default function ProfilePage() {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editedBio, setEditedBio] = useState('');
   const [editedLocation, setEditedLocation] = useState('');
+  const [editedName, setEditedName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editedAvatar, setEditedAvatar] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
@@ -84,6 +85,7 @@ export default function ProfilePage() {
         setProfile(userProfile);
         setEditedBio(userProfile?.bio || '');
         setEditedLocation(userProfile?.location || '');
+        setEditedName(userProfile?.user?.name || '');
         setAvatarPreview(userProfile?.avatarUrl || null);
 
         const userPosts = await fetchPostsByUserId(session.user.id);
@@ -157,6 +159,7 @@ export default function ProfilePage() {
         bio: editedBio || null,
         location: editedLocation || null,
         avatarUrl: avatarUrl,
+        name: editedName || null,
       });
       
       setProfile(updatedProfile);
@@ -355,6 +358,33 @@ export default function ProfilePage() {
             </Box>
           </Box>
 
+          <TextField
+            fullWidth
+            label="Meno"
+            value={editedName}
+            onChange={(e) => setEditedName(e.target.value)}
+            sx={{ 
+              mb: 2,
+              '& .MuiOutlinedInput-root': {
+                color: theme === 'dark' ? '#fff' : 'inherit',
+                '& fieldset': {
+                  borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.23)',
+                },
+                '&:hover fieldset': {
+                  borderColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : '#000',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: theme === 'dark' ? '#fff' : '#000',
+                },
+              },
+              '& .MuiInputLabel-root': {
+                color: theme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
+                '&.Mui-focused': {
+                  color: theme === 'dark' ? '#fff' : '#000',
+                },
+              },
+            }}
+          />
           <TextField
             fullWidth
             label="Bio"

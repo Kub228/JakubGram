@@ -125,3 +125,146 @@ export const deletePost = async (postId: string, userId: string) => {
     throw new Error('Could not delete post');
   }
 };
+
+// Like a post
+export const likePost = async (postId: string, userId: string) => {
+  try {
+    const like = await prisma.like.create({
+      data: {
+        userId,
+        postId,
+      },
+    });
+    return like;
+  } catch (error) {
+    console.error("Error liking post:", error);
+    throw new Error("Could not like post");
+  }
+};
+
+// Unlike a post
+export const unlikePost = async (postId: string, userId: string) => {
+  try {
+    // First check if the like exists
+    const existingLike = await prisma.like.findUnique({
+      where: {
+        userId_postId: {
+          userId,
+          postId,
+        },
+      },
+    });
+
+    if (!existingLike) {
+      return { success: true }; // Like doesn't exist, so we can consider it "unliked"
+    }
+
+    // Delete the like if it exists
+    await prisma.like.delete({
+      where: {
+        userId_postId: {
+          userId,
+          postId,
+        },
+      },
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Error unliking post:", error);
+    throw new Error("Could not unlike post");
+  }
+};
+
+// Get likes for a post
+export const getPostLikes = async (postId: string) => {
+  try {
+    const likes = await prisma.like.findMany({
+      where: { postId },
+      include: {
+        user: {
+          include: {
+            profile: true,
+          },
+        },
+      },
+    });
+    return likes;
+  } catch (error) {
+    console.error("Error fetching post likes:", error);
+    throw new Error("Could not fetch post likes");
+  }
+};
+
+// Add a comment to a post
+export const addComment = async (postId: string, userId: string, content: string) => {
+  try {
+    const comment = await prisma.comment.create({
+      data: {
+        userId,
+        postId,
+        content,
+      },
+      include: {
+        user: {
+          include: {
+            profile: true,
+          },
+        },
+      },
+    });
+    return comment;
+  } catch (error) {
+    console.error("Error adding comment:", error);
+    throw new Error("Could not add comment");
+  }
+};
+
+// Get comments for a post
+export const getPostComments = async (postId: string) => {
+  try {
+    const comments = await prisma.comment.findMany({
+      where: { postId },
+      include: {
+        user: {
+          include: {
+            profile: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return comments;
+  } catch (error) {
+    console.error("Error fetching post comments:", error);
+    throw new Error("Could not fetch post comments");
+  }
+};
+
+// Delete a comment
+export const deleteComment = async (commentId: string, userId: string) => {
+  try {
+    const comment = await prisma.comment.findUnique({
+      where: { id: commentId },
+      select: { userId: true },
+    });
+
+    if (!comment) {
+      throw new Error("Comment not found");
+    }
+
+    if (comment.userId !== userId) {
+      throw new Error("Not authorized to delete this comment");
+    }
+
+    await prisma.comment.delete({
+      where: { id: commentId },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+    throw new Error("Could not delete comment");
+  }
+};

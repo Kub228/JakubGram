@@ -67,6 +67,7 @@ export const updateProfile = async (userId: string, data: {
   bio?: string | null; 
   location?: string | null;
   avatarUrl?: string | null;
+  name?: string | null;
 }) => {
   try {
     const updatedProfile = await prisma.profile.update({
@@ -75,6 +76,11 @@ export const updateProfile = async (userId: string, data: {
         bio: data.bio,
         location: data.location,
         avatarUrl: data.avatarUrl,
+        user: {
+          update: {
+            name: data.name,
+          },
+        },
       },
       include: { user: true },
     });
